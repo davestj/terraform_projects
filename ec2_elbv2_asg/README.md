@@ -1,6 +1,6 @@
 # Terraform Application: AWS EC2 Instance with ELB and ASG
 
-This Terraform application creates an AWS EC2 instance from a provided AMI ID. It also creates an ELB v2 load balancer with access to TCP ports 443, 80, 8080, 8000, and 3000 from anywhere. Additionally, it sets up an Auto Scaling Group (ASG) that launches 3 new instances when the CPU load is greater than 20%. The ASG is associated with the ELB created earlier. The application saves the details of the newly created resources (load balancer ARN, EC2 instance ID, private IP, public IP, instance DNS name, ELB DNS name, and ASG ID) to a text file and prints the results to the console. The text file is then copied to an S3 bucket for artifact storage.
+This Terraform application creates an AWS EC2 instance from a provided AMI ID. It also creates an ELB v2 load balancer with access to TCP ports 22, 443, 80, 8080, 8000, and 3000 from anywhere. Additionally, it sets up an Auto Scaling Group (ASG) that launches 3 new instances when the CPU load is greater than 20%. The ASG is associated with the ELB created earlier. The application saves the details of the newly created resources (load balancer ARN, EC2 instance ID, private IP, public IP, instance DNS name, ELB DNS name, and ASG ID) to a text file and prints the results to the console. The text file is then copied to an S3 bucket for artifact storage.
 
 ## Usage
 
