@@ -1,0 +1,5 @@
+module "elb_v1" {
+  source  = "./elb_v1"
+  ports   = [22, 443, 80, 8080, 8000, 3000]
+  targets = [module.ec2_instance.instance_id]
+}
