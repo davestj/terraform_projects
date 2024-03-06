@@ -1,61 +1,62 @@
+variable "aws_region" {
+  description = "The AWS region"
+  type        = string
+  default     = "us-east-1"  # Update with your desired AWS region, this overrides whatever you have set in ~/.terraform.rc
+}
+
 variable "ecs_cluster_name" {
   description = "The name of the ECS cluster"
   type        = string
-  default     = "The Big Wordpress ECS Demo with TF"
+  default     = "WP AWS Demo"
 }
 
-
-# Include variables from the aws-rds module, no need to redo.
-module "rds_variables" {
-  source = "./aws-rds"
-
-  # Pass any necessary variables to the aws-rds module here
-  # For example:
-  db_name              = var.db_name
-  db_username          = var.db_username
-  db_password          = var.db_password
-  db_instance_class    = var.db_instance_class
-  db_allocated_storage = var.db_allocated_storage
-  db_engine            = var.db_engine
-  db_instance_identifier = var.db_instance_identifier
-  db_subnet_group_name = var.db_subnet_group_name
-  db_security_group_name = var.db_security_group_name
+variable "aws_account_id" {
+  description = "AWS account ID" #  incase of multi account.
+  type        = string
 }
 
-# Reference the variables from the aws-rds module
 variable "db_name" {
-  description = module.rds_variables.db_name
+  description = "The name of the RDS database"
+  type        = string
 }
 
 variable "db_username" {
-  description = module.rds_variables.db_username
+  description = "The username for accessing the RDS database"
+  type        = string
 }
 
 variable "db_password" {
-  description = module.rds_variables.db_password
+  description = "The password for accessing the RDS database"
+  type        = string
 }
 
 variable "db_instance_class" {
-  description = module.rds_variables.db_instance_class
+  description = "The instance class for the RDS database"
+  type        = string
 }
 
 variable "db_allocated_storage" {
-  description = module.rds_variables.db_allocated_storage
+  description = "The allocated storage for the RDS database"
+  type        = number
 }
 
 variable "db_engine" {
-  description = module.rds_variables.db_engine
+  description = "The engine type for the RDS database"
+  type        = string
 }
 
 variable "db_instance_identifier" {
-  description = module.rds_variables.db_instance_identifier
+  description = "The identifier for the RDS database instance"
+  type        = string
 }
 
 variable "db_subnet_group_name" {
-  description = module.rds_variables.db_subnet_group_name
+  description = "The name of the DB subnet group"
+  type        = string
 }
 
 variable "db_security_group_name" {
-  description = module.rds_variables.db_security_group_name
+  description = "The name of the security group for the RDS database"
+  type        = string
 }
 
