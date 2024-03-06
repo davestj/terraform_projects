@@ -1,0 +1,30 @@
+name: Terraform Lint
+
+on:
+  push:
+    branches:
+      - main
+      - devel
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  lint:
+    name: Run Terraform Lint on wordpress-aws-demo
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install tflint
+      run: |
+        wget -q https://github.com/terraform-linters/tflint/releases/download/v0.30.0/tflint_linux_amd64.zip
+        unzip tflint_linux_amd64.zip
+        sudo mv tflint /usr/local/bin/
+        tflint --version
+
+    - name: Run tflint
+      run: cd wordpress-aws-demo/ && tflint --module --loglevel=info
+
