@@ -14,7 +14,7 @@ This Terraform module deploys a WordPress application on AWS using ECS (Elastic 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/wordpress-aws-demo.git
+    git clone git@github.com:davestj/terraform_projects.git
     ```
 
 2. Navigate to the `wordpress-aws-demo` directory:
