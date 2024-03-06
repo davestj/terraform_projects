@@ -22,6 +22,11 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: '1.7.4'
+
     - name: Install tflint
       run: |
         wget -q https://github.com/terraform-linters/tflint/releases/download/v0.30.0/tflint_linux_amd64.zip
@@ -29,6 +34,9 @@ jobs:
         sudo mv tflint /usr/local/bin/
         tflint --version
 
+    - name: Initialize Terraform
+      run: cd wordpress-aws-demo/; terraform init
+
     - name: Run tflint
-      run: cd wordpress-aws-demo/ && tflint --module --loglevel=info
+      run: cd wordpress-aws-demo/; tflint --module --loglevel=info
 
