@@ -1,0 +1,42 @@
+name: Terraform Lint
+
+on:
+  push:
+    branches:
+      - main
+      - devel
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  lint:
+    name: Run Terraform Lint on wordpress-aws-demo
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Use Node.js 20
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: '1.7.4'
+
+    - name: Install tflint
+      run: |
+        wget -q https://github.com/terraform-linters/tflint/releases/download/v0.30.0/tflint_linux_amd64.zip
+        unzip tflint_linux_amd64.zip
+        sudo mv tflint /usr/local/bin/
+        tflint --version
+
+    - name: Initialize Terraform
+      run: cd wordpress-aws-demo/; terraform init
+
+    - name: Run tflint
+      run: cd wordpress-aws-demo/; tflint --module --loglevel=info
+
