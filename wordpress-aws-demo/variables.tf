@@ -70,3 +70,8 @@ variable "db_security_group_name" {
   default     = "123456789"
 }
 
+variable "aws_wp_ecr_repo_name" {
+  description = "AWS ECR Repoistory Name"
+  type        = string
+  default     = "wordpress-development"
+}
