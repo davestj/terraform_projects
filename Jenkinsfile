@@ -83,8 +83,6 @@ pipeline {
         
         stage('Saving Terraform Artifacts') {
             steps {
-                archiveArtifacts 'wordpress-aws-demo/*.tfstate'
-                archiveArtifacts 'wordpress-aws-demo/*.tfstate.backup'
                 archiveArtifacts 'wordpress-aws-demo/terraform.tfvars'
             }
         }
