@@ -35,7 +35,4 @@ resource "aws_ecs_service" "wordpress_service" {
   }
 }
 
-output "wordpress_container_dns_url" {
-  value = aws_ecs_service.wordpress_service.load_balancer.first.dns_name
-}
 
