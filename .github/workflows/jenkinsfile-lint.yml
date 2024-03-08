@@ -3,10 +3,10 @@ name: Jenkinsfile Lint
 on:
   push:
     branches:
-      - main
+      - devel
   pull_request:
     branches:
-      - main
+      - devel
 
 jobs:
   lint:
@@ -15,10 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Set up Java
-        uses: actions/setup-java@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          java-version: '11'
+          node-version: '20'
           
       - name: Install Jenkinsfile Linter
         run: npm install -g jenkinsfile-linter
