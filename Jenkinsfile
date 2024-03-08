@@ -26,7 +26,7 @@ pipeline {
                     copyArtifacts(
                         filter: 'terraform.tfvars',
                         projectName: 'terraform_projects-wp-demo',
-                        selector: specific(lastBuild.number)
+                        selector: specific(String.valueOf(lastBuild.number))
                     )
                 }
             }
@@ -83,8 +83,6 @@ pipeline {
         
         stage('Saving Terraform Artifacts') {
             steps {
-                archiveArtifacts 'wordpress-aws-demo/*.tfstate'
-                archiveArtifacts 'wordpress-aws-demo/*.tfstate.backup'
                 archiveArtifacts 'wordpress-aws-demo/terraform.tfvars'
             }
         }
