@@ -26,7 +26,7 @@ pipeline {
                     copyArtifacts(
                         filter: 'terraform.tfvars',
                         projectName: 'terraform_projects-wp-demo',
-                        selector: specific(lastBuild.number)
+                        selector: specific(String.valueOf(lastBuild.number))
                     )
                 }
             }
