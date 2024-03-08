@@ -66,7 +66,7 @@ pipeline {
             steps {
                 script {
                     dir('wordpress-aws-demo') {
-                        sh 'terraform plan'
+                        sh 'terraform plan -out=wordpress-aws-demo.plan'
                     }
                 }
             }
@@ -84,6 +84,7 @@ pipeline {
         stage('Saving Terraform Artifacts') {
             steps {
                 archiveArtifacts 'wordpress-aws-demo/terraform.tfvars'
+                archiveArtifacts 'wordpress-aws-demo/wordpress-aws-demo.plan'
             }
         }
 
