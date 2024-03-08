@@ -1,7 +1,3 @@
-output "wp_container_dns_url" {
-  description = "The DNS URL for accessing the WordPress application."
-  value       = module.ecs_service.wordpress_container_dns_url
-}
 
 output "wp_rds_endpoint" {
   description = "The endpoint of the RDS MariaDB database."

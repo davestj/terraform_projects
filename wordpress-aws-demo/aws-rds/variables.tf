@@ -13,6 +13,7 @@ variable "db_username" {
 variable "db_password" {
   description = "The password for accessing the RDS database"
   type        = string
+  default     = ""
 }
 
 variable "db_instance_class" {
@@ -54,12 +55,12 @@ variable "db_instance_identifier" {
 variable "db_subnet_group_name" {
   description = "The name of the DB subnet group"
   type        = string
-  default     = "sub-12345678"
+  default     = "12345678"
 }
 
 variable "db_security_group_name" {
   description = "The name of the DB security group"
   type        = string
-  default     = "sg-123456789"
+  default     = "123456789"
 }
 

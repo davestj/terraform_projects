@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"  # Update with your desired AWS region
+  region = "us-west-2"  # Update with your desired AWS region
 }
 
 resource "aws_db_subnet_group" "db_subnet_group" {
@@ -17,7 +17,7 @@ resource "aws_db_instance" "wordpress_db" {
   engine               = var.db_engine
   engine_version       = var.maria_db_engine_version
   instance_class       = var.db_instance_class
-  name                 = var.db_name
+  identifier           = var.db_name
   username             = var.db_username
   password             = var.db_password
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
