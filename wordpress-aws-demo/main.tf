@@ -5,15 +5,15 @@ provider "aws" {
 module "rds" { # Call in our aws-rds mod
   source = "./aws-rds"
 
-  db_name                  = var.db_name
-  db_username              = var.db_username
-  db_password              = var.db_password
-  db_instance_class        = var.db_instance_class
-  db_allocated_storage     = var.db_allocated_storage
-  db_engine                = var.db_engine
-  db_instance_identifier   = var.db_instance_identifier
-  db_subnet_group_name     = var.db_subnet_group_name
-  db_security_group_name   = var.db_security_group_name
+  db_name                = var.db_name
+  db_username            = var.db_username
+  db_password            = var.db_password
+  db_instance_class      = var.db_instance_class
+  db_allocated_storage   = var.db_allocated_storage
+  db_engine              = var.db_engine
+  db_instance_identifier = var.db_instance_identifier
+  db_subnet_group_name   = var.db_subnet_group_name
+  db_security_group_name = var.db_security_group_name
 }
 
 module "ecr" {
@@ -22,15 +22,15 @@ module "ecr" {
 }
 
 module "build_wp_image" {
-  source            = "./build_wp_image"
-  aws_account_id    = var.aws_account_id
-  aws_region        = var.aws_region
-  repository_name   = var.aws_wp_ecr_repo_name
+  source          = "./build_wp_image"
+  aws_account_id  = var.aws_account_id
+  aws_region      = var.aws_region
+  repository_name = var.aws_wp_ecr_repo_name
 }
 
 
 resource "aws_ecs_task_definition" "wordpress_task" {
-  family                   = "wordpress"
+  family                = "wordpress"
   container_definitions = <<TASK_DEFINITION
   [
     {
@@ -60,9 +60,9 @@ resource "aws_ecs_service" "wordpress_service" {
   launch_type     = "FARGATE" # Spendy tech
 
   network_configuration {
-    subnets         = ["subnet-xxxxxxxx", "subnet-yyyyyyyy"]  # Update with your desired subnet IDs, or swap out and use default variables
-    security_groups = ["sg-123456789"]  # Update with your security group IDs, default vars could be used here....
-    assign_public_ip = true # Yes, we want to be able to see wordpress, it is true.
+    subnets          = ["subnet-xxxxxxxx", "subnet-yyyyyyyy"] # Update with your desired subnet IDs, or swap out and use default variables
+    security_groups  = ["sg-123456789"]                       # Update with your security group IDs, default vars could be used here....
+    assign_public_ip = true                                   # Yes, we want to be able to see wordpress, it is true.
   }
 }
 
