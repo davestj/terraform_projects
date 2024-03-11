@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "The AWS region"
   type        = string
-  default     = "us-west-2"  # Update with your desired AWS region, this overrides whatever you have set in ~/.terraform.rc
+  default     = "us-west-2" # Update with your desired AWS region, this overrides whatever you have set in ~/.terraform.rc
 }
 
 variable "ecs_cluster_name" {

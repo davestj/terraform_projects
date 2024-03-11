@@ -1,5 +1,5 @@
 name: Terraform Lint
-
+runs-on: self-hosted
 on:
   push:
     branches:
